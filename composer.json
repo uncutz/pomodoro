@@ -1,0 +1,34 @@
+{
+  "name": "johannespanzer/project-framework",
+  "type": "project",
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  },
+  "authors": [
+    {
+      "name": "johannespanzer",
+      "email": "johannes-panzer@gmx.de"
+    }
+  ],
+  "require": {
+    "slim/slim": "4.9",
+    "slim/psr7": "^1.5",
+    "slim/http": "1.2",
+    "slim/twig-view": "^3.2",
+    "twig/cache-extra": "^3.3",
+    "ext-pdo": "*",
+    "ext-json": "*"
+  }
+  ,
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "Backend\\": "source/",
+      "jpan\\": "jpan/"
+    }
+  }
+}
