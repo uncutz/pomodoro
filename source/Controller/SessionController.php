@@ -14,7 +14,6 @@ use Twig\Error\SyntaxError;
 
 class SessionController extends AbstractController
 {
-
     /**
      * @throws SyntaxError
      * @throws NotFoundExceptionInterface
@@ -25,7 +24,20 @@ class SessionController extends AbstractController
     public function config(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $container = $this->getContainer();
-        return $container->getView()->render($response, 'pages/index.twig');
+        return $container->getView()->render($response, 'pages/session-config.twig');
+    }
+
+    /**
+     * @throws SyntaxError
+     * @throws NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    public function session(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
+        $container = $this->getContainer();
+        return $container->getView()->render($response, 'pages/session.twig');
     }
 
 }

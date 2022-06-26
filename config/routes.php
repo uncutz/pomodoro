@@ -16,4 +16,9 @@ return [
         'path' => '/session/config',
         'class' => SessionController::class . ':config'
     ],
+    'session' => [
+        'type' => 'GET',
+        'path' => '/session',
+        'class' => SessionController::class . ':session'
+    ],
 ];
