@@ -1,4 +1,7 @@
 /vendor/
+/node_modules
 /.docker/mariadb
 .idea
-/.docker
+/config/localconf.json
+/public/dist_dev
+/docker

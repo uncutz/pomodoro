@@ -15,15 +15,14 @@ use Twig\RuntimeLoader\RuntimeLoaderInterface;
 
 $container = new Container();
 
-
 $container->add('session', static function (): Session {
     return new Session();
 });
 
 
-$container->add('pdo', static function (): PDO {
-    $settings = require __DIR__ . '/database.php';
-    return MysqlConnection::fromConfig($settings);
+$container->add('pdo', function (): PDO {
+    $localConf = json_decode(file_get_contents(__DIR__ . '/localconf.json'), true);
+    return MysqlConnection::fromConfig($localConf['database']);
 });
 
 $container->add('routes', static function (): Routes {
@@ -36,24 +35,30 @@ $container->add('view', static function () {
     $view = Twig::create(
         __DIR__ . '/../template',
         [
-            'cache' => false, //__DIR__ . '/../cache',
-            'debug' => true,
+            'cache' => !PROJECT_ENV_DEBUG, //__DIR__ . '/../cache',
+            'debug' => PROJECT_ENV_DEBUG,
         ]
     );
+
+    $view->addExtension(new \Backend\Twig\Extension()); //TODO add container as param
 
     $view->addExtension(new DebugExtension());
 
     $view->addExtension(new CacheExtension());
 
-    $view->addRuntimeLoader(new class implements RuntimeLoaderInterface {
-        public function load($class): CacheRuntime
-        {
-            if (CacheRuntime::class === $class) {
-                return new CacheRuntime(new TagAwareAdapter(new FilesystemAdapter()));
+    if(!PROJECT_ENV_DEBUG)
+    {
+        $view->addRuntimeLoader(new class implements RuntimeLoaderInterface {
+            public function load($class): CacheRuntime
+            {
+                if (CacheRuntime::class === $class) {
+                    return new CacheRuntime(new TagAwareAdapter(new FilesystemAdapter()));
+                }
+                throw new RuntimeException('could not load CacheRuntime');
             }
-            throw new RuntimeException('could not load CacheRuntime');
-        }
-    });
+        });
+    }
+
 
     return $view;
 });

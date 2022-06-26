@@ -10,9 +10,6 @@ services:
     #container_name: php_app
     restart: unless-stopped
     tty: true
-    environment:
-      SERVICE_NAME: app
-      SERVICE_TAGS: dev
     working_dir: /var/www/html
     volumes:
       - ./:/var/www/html
@@ -20,7 +17,7 @@ services:
 
   #Nginx Service
   nginx:
-    image: nginx:alpine
+    image: nginx:ubuntu
     #container_name: nginx
     restart: unless-stopped
     tty: true

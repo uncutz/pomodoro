@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% set filePath = 'dist' %}
+    {% if constant('PROJECT_ENV') == 'dev' %}
+        {% set filePath = 'dist_dev' %}
+    {% endif %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/{{ filePath }}/main.css">
+
+    {% block styles %}
+    {% endblock %}
+</head>
+<body>
+
+{% include "components/navbar.twig" %}
+
+{% block content %}
+{% endblock %}
+
+<footer>
+
+</footer>
+
+<script src="/libs/fontawesome-free-6.1.1-web/js/all.min.js"></script>
+<script src="/{{ filePath }}/main.js"></script>
+<script>
+    const Main = new Module.Main()
+    Main.initMain()
+</script>
+
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

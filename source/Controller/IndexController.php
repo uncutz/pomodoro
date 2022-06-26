@@ -21,9 +21,7 @@ class IndexController extends AbstractController
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-
         $container = $this->getContainer();
-        $container->getView()->render($response, 'index.twig');
-        return $response;
+        return $container->getView()->render($response, 'pages/index.twig');
     }
 }
