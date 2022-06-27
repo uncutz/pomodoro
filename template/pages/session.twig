@@ -5,11 +5,15 @@
 
 
 {% block content %}
-    <section class="section">
-
-    </section>
+    <div class="timer__wrapper">
+        <div class="timer__circle">
+            <div class="timer__number">
+                <h1>00:00:00</h1>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}
-    <script>Main.initTimer()</script>
+    <script>Main.initTimer();</script>
 {% endblock %}
