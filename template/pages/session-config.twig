@@ -3,13 +3,32 @@
     Pomodoro Configuration
 {% endblock %}
 
-
 {% block content %}
     <section class="section">
         <h2>Configuration</h2>
         <h3>Progress Bar...</h3>
         <div class="config-panel">
-
+            <div>
+                <label for="session-duration">Session Duration</label>
+                <input id="session-duration" class="config-panel__input" type="time" value="1:00">
+            </div>
+            <div>
+                <label for="working-block-length">working block length (min)</label>
+                <input id="working-block-length" class="config-panel__input" type="number" value="25">
+            </div>
+            <div>
+                <label for="break-length">break length (min)</label>
+                <input id="break-length" class="config-panel__input" type="number" value="5">
+            </div>
+            <hr>
+            <p>Search for tracks on Youtube</p>
+            <hr>
+            <input class="config-panel__input" type="text" placeholder="search term...">
+            <select class="config-panel__select">
+                <option class="config-panel__select__option" value="0">Search for</option>
+                <option class="config-panel__select__option" value="1">Videos</option>
+                <option class="config-panel__select__option" value="2">Playlist</option>
+            </select>
         </div>
     </section>
 {% endblock %}
