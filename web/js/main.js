@@ -1,11 +1,15 @@
 import Timer from './components/Timer.js';
+import Dropdown from './components/Dropdown.js';
+
 import './../css/main.less';
+
 
 export class Main
 {
 
     initMain()
     {
+        new Dropdown();
     }
 
     initTimer()

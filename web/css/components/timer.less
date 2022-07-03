@@ -1,0 +1,40 @@
+.timer__wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //position: relative;
+}
+
+.timer__circle {
+  //position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  width: 18em;
+  height: 18em;
+  //clip: rect(1em, 10em, 10em, 1em);
+
+  animation-name: pulse;
+  animation-duration: 2.0s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+@keyframes pulse {
+  0% {
+    border-radius: 45%;
+  }
+}
+
+
+.timer__number {
+    font-weight: bold;
+  h1 {
+    font-size: 3rem;
+  }
+}
