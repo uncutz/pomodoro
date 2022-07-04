@@ -1,6 +1,6 @@
 import Timer from './components/Timer.js';
 import Dropdown from './components/Dropdown.js';
-
+import DataCollector from './components/DataCollector.js';
 import './../css/main.less';
 
 
@@ -12,9 +12,13 @@ export class Main
         new Dropdown();
     }
 
-    initTimer()
+    initTimer(newTime)
     {
-        new Timer();
+        new Timer(newTime);
+    }
+
+    startSession() {
+        return new DataCollector();
     }
 }
 

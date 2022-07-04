@@ -1,8 +1,8 @@
 export default class Timer
 {
-    constructor(newTime = 5 * 60 * 1000)
+    constructor(newTime)
     {
-        const time = new Date().setTime(new Date().getTime() + newTime);
+        const time = new Date().setTime(new Date().getTime() + (parseInt(newTime) * 60 * 1000));
         this.initTimer(time);
     }
 

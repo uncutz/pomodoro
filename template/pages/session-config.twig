@@ -9,10 +9,10 @@
         <h3>Progress Bar...</h3>
         <div class="config-panel">
             <div class="text-end">
-                <a class="button button-primary">Start Session</a>
+                <a class="button button-primary" onclick="Main.startSession()">Start Session</a>
             </div>
             <div class="form-control">
-                <label for="session-duration">Session Duration</label>
+                <label for="session-duration">session duration</label>
                 <input id="session-duration" class="config-panel__input" type="time" value="1:00">
             </div>
             <div class="form-control">
@@ -22,6 +22,10 @@
             <div class="form-control">
                 <label for="break-length">break length (min)</label>
                 <input id="break-length" class="config-panel__input" type="number" value="5">
+            </div>
+            <div class="form-control">
+                <label for="youtube-link">youtube link</label>
+                <input id="youtube-link" class="config-panel__input" type="text" placeholder="https://www.youtube.com/watch?v=kHq_zevqJPc">
             </div>
             <!--
             <hr>
@@ -34,14 +38,17 @@
                 <option class="config-panel__select__option" value="2">Playlist</option>
             </select>
             -->
-            <div class="dropdown">
+            <!--<div class="dropdown">
                 <button class="button button-primary dropdown__button">Show recommended playlists</button>
                 <ul class="dropdown__item-list">
-                   <li>
-                        <p>hi</p>
-                   </li>
+                    <li>
+                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/kHq_zsqJCPc"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </li>
                 </ul>
-            </div>
+            </div>-->
         </div>
     </section>
 {% endblock %}

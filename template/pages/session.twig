@@ -15,5 +15,6 @@
 {% endblock %}
 
 {% block scripts %}
-    <script>Main.initTimer();</script>
+    <script>
+        Main.initTimer({{ workingBlockLength }});</script>
 {% endblock %}
