@@ -17,7 +17,8 @@ export class Main
         new Timer(newTime);
     }
 
-    startSession() {
+    collectData()
+    {
         return new DataCollector();
     }
 }
@@ -32,7 +33,7 @@ if ($navbar) {
 
 function addFixed()
 {
-    const navbarOffset = $navbar.offsetTop + $navbar.offsetHeight;
+    const navbarOffset = $navbar.offsetTop + $navbar.offsetHeight / 3;
     if (window.scrollY >= navbarOffset) {
         $navbar.classList.add('fixed-top');
     } else {
