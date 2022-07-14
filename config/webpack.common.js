@@ -1,10 +1,52 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path')
 
-const assetPath = path.resolve(__dirname, "../web/js/main.js")
+const modulesCollection = [
+    {
+        'common':
+            [
+                'CommonMain',
+            ]
+    },
+    {
+        'sites/index':
+            [
+                'IndexMain'
+            ],
+    },
+    {
+        'sites/Session':
+            [
+                'SessionMain'
+            ],
+    },
+    {
+        'sites/session-config':
+            [
+                'SessionConfigMain'
+            ],
+    },
+    {
+        'timer':
+            [
+                'TimerMain'
+            ],
+    },
+]
+
+let paths = modulesCollection.map((module) => {
+    return module[Object.keys(module)[0]].reduce((config, main) => {
+        config[main] = `./web/${Object.keys(module)[0]}/${main}.js`;
+        return config;
+    }, {})
+}, {})
+
+paths = paths.reduce((pathConfig, currentObject) => {
+    pathConfig = {...pathConfig, ...currentObject}
+    return pathConfig
+})
 
 const config = {
-    entry: assetPath,
+    entry: paths,
     output: {
         library: "Module",
         libraryTarget: "umd",

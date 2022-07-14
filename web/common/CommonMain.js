@@ -1,26 +1,14 @@
-import Timer from './components/Timer.js';
-import Dropdown from './components/Dropdown.js';
-import DataCollector from './components/DataCollector.js';
-import './../css/main.less';
+import Dropdown from './js/Dropdown.js';
+import './CommonMain.less';
 
 
-export class Main
+export class CommonMain
 {
-
-    initMain()
+    init()
     {
         new Dropdown();
     }
 
-    initTimer(newTime)
-    {
-        new Timer(newTime);
-    }
-
-    collectData()
-    {
-        return new DataCollector();
-    }
 }
 
 const $navbar = document.querySelector('.navbar');

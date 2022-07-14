@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/{{ filePath }}/main.css">
+    <link rel="stylesheet" href="/{{ filePath }}/CommonMain.css">
 
     {% block styles %}
     {% endblock %}
@@ -31,10 +31,10 @@
 </footer>
 
 <script src="/libs/fontawesome-free-6.1.1-web/js/all.min.js"></script>
-<script src="/{{ filePath }}/main.js"></script>
+<script src="/{{ filePath }}/CommonMain.js"></script>
 <script>
-    const Main = new Module.Main()
-    Main.initMain()
+    const CommonMain = new Module.CommonMain()
+    CommonMain.init()
 </script>
 
 {% block scripts %}
