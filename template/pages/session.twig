@@ -28,7 +28,13 @@
     <script src="/{{ filePath }}/TimerMain.js"></script>
     <script>
         const TimerMain = new Module.TimerMain();
-        TimerMain.init({{ workingBlockLength }})
+        TimerMain.init({{ workingBlockLength }});
+
+        let position = '{{ videoLink }}'.lastIndexOf('=');
+        if (position === -1) {
+            position = '{{ videoLink }}'.lastIndexOf('/');
+        }
+        const videoId = '{{ videoLink }}'.slice(position + 1);
     </script>
 
     <script>
@@ -45,18 +51,18 @@
             player = new YT.Player('player', {
                 height:  '',
                 width:   '',
-                videoId: '9UMxZofMNbA',
+                videoId: videoId
             });
         }
 
         function pauseOrPlayVideo(player)
         {
-            if(player.getPlayerState() !== 1) {
+            if (player.getPlayerState() !== 1) {
                 player.playVideo();
-                return
+                return;
             }
 
-            if(player.getPlayerState() !== 2) {
+            if (player.getPlayerState() !== 2) {
                 player.pauseVideo();
                 return;
             }
