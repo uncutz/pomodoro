@@ -13,7 +13,7 @@
         <h3>Progress Bar...</h3>
         <div class="config-panel">
             <div class="text-end">
-                <a class="button button-primary" onclick="Main.collectData()">Start Session</a>
+                <a class="button button-primary" onclick="SessionConfigMain.collectData()">Start Session</a>
             </div>
             <div class="form-control">
                 <label for="session-duration">session duration</label>
@@ -61,6 +61,5 @@
     <script src="/{{ filePath }}/SessionConfigMain.js"></script>
     <script>
         const SessionConfigMain = new Module.SessionConfigMain()
-        SessionConfigMain.collectData()
     </script>
 {% endblock %}

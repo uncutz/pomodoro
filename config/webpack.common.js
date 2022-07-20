@@ -26,7 +26,7 @@ const modulesCollection = [
             ],
     },
     {
-        'timer':
+        'components/timer':
             [
                 'TimerMain'
             ],

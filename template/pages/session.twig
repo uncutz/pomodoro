@@ -12,7 +12,7 @@
 {% block content %}
     <div class="timer__wrapper">
         <div class="timer__circle">
-            <div class="timer__number" data-time-left="" data-interval-id="">
+            <div class="timer__number" data-time-left="">
                 <h1>00:00:00</h1>
             </div>
         </div>
@@ -21,15 +21,14 @@
 
     <div class="playlist">
         <div id="player"></div>
-        <button class="button button-primary" onclick="player.playVideo()">Play</button>
     </div>
 {% endblock %}
 
 {% block scripts %}
     <script src="/{{ filePath }}/TimerMain.js"></script>
     <script>
-        const Timer = new Module.Timer();
-        Timer.initTimer({{ workingBlockLength }})
+        const TimerMain = new Module.TimerMain();
+        TimerMain.init({{ workingBlockLength }})
     </script>
 
     <script>
@@ -46,34 +45,21 @@
             player = new YT.Player('player', {
                 height:  '',
                 width:   '',
-                videoId: '9UMxZofMNbA'
+                videoId: '9UMxZofMNbA',
             });
         }
 
-        // 4. The API will call this function when the video player is ready.
-        function onPlayerReady(event)
+        function pauseOrPlayVideo(player)
         {
-            console.log(event.target);
-            event.target.playVideo();
-        }
-
-
-        // 5. The API calls this function when the player's state changes.
-        //    The function indicates that when playing a video (state=1),
-        //    the player should play for six seconds and then stop.
-        let done = false;
-
-        function onPlayerStateChange(event)
-        {
-            if (event.data === YT.PlayerState.PLAYING && !done) {
-                setTimeout(stopVideo, 6000);
-                done = true;
+            if(player.getPlayerState() !== 1) {
+                player.playVideo();
+                return
             }
-        }
 
-        function stopVideo()
-        {
-            player.stopVideo();
+            if(player.getPlayerState() !== 2) {
+                player.pauseVideo();
+                return;
+            }
         }
     </script>
 {% endblock %}
