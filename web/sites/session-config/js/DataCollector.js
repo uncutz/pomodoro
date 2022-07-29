@@ -12,14 +12,39 @@ export default class DataCollector
         const breakLength        = document.querySelector('#break-length').value;
         const videoLink          = document.querySelector('#youtube-link').value;
 
-        location.href =
-            '/session?' +
-            'sessionDuration=' +
-            sessionDuration + '&' +
-            'workingBlockLength=' +
-            workingBlockLength + '&' +
-            'breakLength=' +
-            breakLength + '&' +
-            'videoLink=' + videoLink;
+        const valid = this.isValid(sessionDuration, workingBlockLength, breakLength, videoLink);
+
+        if(valid) {
+            location.href =
+                '/session?' +
+                'sessionDuration=' +
+                sessionDuration + '&' +
+                'workingBlockLength=' +
+                workingBlockLength + '&' +
+                'breakLength=' +
+                breakLength + '&' +
+                'videoLink=' + videoLink;
+        } else {
+            alert('not valid input');
+        }
+    }
+
+    isValid(sessionDuration, workingBlockLength, breakLength, videoLink) {
+
+        let valid = true;
+        if(!sessionDuration || sessionDuration === '' || sessionDuration === null) {
+            valid = false;
+        }
+        if(!workingBlockLength || workingBlockLength === '' || workingBlockLength === null) {
+            valid = false;
+        }
+        if(!breakLength || breakLength === '' || breakLength === null) {
+            valid = false;
+        }
+        if(!videoLink || videoLink === '' || videoLink === null) {
+            valid = false;
+        }
+
+        return valid;
     }
 }

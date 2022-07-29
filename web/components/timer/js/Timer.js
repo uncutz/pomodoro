@@ -1,14 +1,17 @@
 export default class Timer
 {
-    constructor(newTime)
+    constructor(workTime, breakTime)
     {
-        this.isPaused = true;
-        const time    = new Date().setTime(new Date().getTime() + (parseInt(newTime) * 60 * 1000));
-        this.initTimer(time);
+        this.workPhase = true;
+        this.isPaused  = true;
+        this.initTimer(workTime, breakTime);
+        console.log(workTime);
+        console.log(breakTime);
     }
 
-    initTimer(time)
+    initTimer(workTime, breakTime)
     {
+        let time         = new Date().setTime(new Date().getTime() + (parseInt(workTime) * 60 * 1000));
         let timeLeft;
         const intervalId = setInterval(() => {
             let now = new Date().getTime();
@@ -31,13 +34,16 @@ export default class Timer
 
             if (parseInt(hours + minutes + seconds) <= 0) {
                 clearInterval(intervalId);
+                this.workPhase = !this.workPhase;
+                if (this.workPhase) {
+                    this.initTimer(workTime, breakTime);
+                }
+                if (!this.workPhase) {
+                    this.initTimer(breakTime, breakTime);
+                }
             }
 
             if (document.querySelector('.timer__number')) {
-                /*
-                document.querySelector('.timer__number')
-                        .setAttribute('data-interval-id', intervalId);
-                 */
                 document.querySelector('.timer__number')
                         .setAttribute('data-time-left', `${hours}:${minutes}:${seconds}`);
             }

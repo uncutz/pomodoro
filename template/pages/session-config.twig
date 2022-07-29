@@ -16,8 +16,8 @@
                 <a class="button button-primary" onclick="SessionConfigMain.collectData()">Start Session</a>
             </div>
             <div class="form-control">
-                <label for="session-duration">session duration</label>
-                <input id="session-duration" class="config-panel__input" type="time" value="1:00">
+                <label for="session-duration">session duration (hours)</label>
+                <input id="session-duration" class="config-panel__input" type="number" min="1" max="24" placeholder="1.5">
             </div>
             <div class="form-control">
                 <label for="working-block-length">working block length (min)</label>

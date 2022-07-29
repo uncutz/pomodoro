@@ -28,16 +28,16 @@
     <script src="/{{ filePath }}/TimerMain.js"></script>
     <script>
         const TimerMain = new Module.TimerMain();
-        TimerMain.init({{ workingBlockLength }});
+        TimerMain.init({{ workingBlockLength }}, {{ breakLength }});
 
+    </script>
+
+    <script>
         let position = '{{ videoLink }}'.lastIndexOf('=');
         if (position === -1) {
             position = '{{ videoLink }}'.lastIndexOf('/');
         }
         const videoId = '{{ videoLink }}'.slice(position + 1);
-    </script>
-
-    <script>
 
         const tag            = document.createElement('script');
         tag.src              = 'https://www.youtube.com/iframe_api';
